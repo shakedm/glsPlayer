@@ -1,3 +1,5 @@
+import glsStep from './glsStep'
+
 
 class glsWrapper{
     constructor (data) {
