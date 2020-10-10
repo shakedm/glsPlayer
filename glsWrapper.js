@@ -31,8 +31,24 @@ class glsWrapper{
     }
 
     get steps () {
-        const { steps } = this.structure;
+        if(!this._steps){
+            const { steps } = this.structure;
+            this._steps = steps.map(step => new glsStep(this, step));
+        }
+        
         return this._steps;
-        // check this
+        // should work now
     }
+
+    get tipElement () {
+        const { tip } = this.tiplates;
+        return tip;
+    }
+
+    get hoverTipElement () {
+        const { hoverTip } = this.tiplates;
+        return hoverTip;
+    }
+
+    //need to add steps methods
 }

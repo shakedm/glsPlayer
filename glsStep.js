@@ -13,9 +13,21 @@ class glsStep {
     }
 
     get _action () {
-        const { action } = this._step;
-        return action;
+        if(!this._action){
+            const { action } = this._step;
+            this._action = new glsStepAction(action);
+        }
+        return this._action;
     }
 
+    get nextStep () {
+        const { followers } = this._step;
+        if(!followers.length){
+            return null;
+        }
+        const nextStepID = followers[0].next;
+        const nextStep = this._glsWrapper.steps.find(step => step.id === nextStep);
+        return nextStep;
+    }
 
 }
