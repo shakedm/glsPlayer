@@ -21,7 +21,7 @@ class glsWrapper{
 
     get css () {
         const { css } = this._data;
-        return css;
+        return unescape(css);
         // might need to parse the css?
     }
 
@@ -37,7 +37,7 @@ class glsWrapper{
         }
         
         return this._steps;
-        // should work now
+        
     }
 
     get tipElement () {

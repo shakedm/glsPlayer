@@ -5,7 +5,9 @@ const urlGoogle = 'https://www.google.com/';
 const urlJSONP ='https://guidedlearning.oracle.com/player/latest/api/scenario/get/v_IlPvRLRWObwLnV5sTOaw/5szm2kaj/?callback=__5szm2kaj&amp;refresh=true&amp;env=dev&amp;type=startPanel&amp;vars%5Btype%5D=startPanel&amp;sid=none&amp;_=1582203987867';
 
 function handleJSONP(){
-    //maybe new class?
+    window.guideRes = null;
+    jQueryImport();
+    //run the css code? the inside code?
 }
 
 function runGet(){
