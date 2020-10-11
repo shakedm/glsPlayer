@@ -12,10 +12,10 @@ class glsStep {
         return id;
     }
 
-    get _action () {
+    get action () {
         if(!this._action){
             const { action } = this._step;
-            this._action = new glsStepAction(action);
+            this._action = new glsStepAction(this._glsWrapper,action);
         }
         return this._action;
     }
@@ -26,7 +26,7 @@ class glsStep {
             return null;
         }
         const nextStepID = followers[0].next;
-        const nextStep = this._glsWrapper.steps.find(step => step.id === nextStep);
+        const nextStep = this._glsWrapper.steps.find(step => step.id === nextStepID);
         return nextStep;
     }
 

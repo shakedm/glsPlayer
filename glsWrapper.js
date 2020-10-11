@@ -1,15 +1,15 @@
 import glsStep from './glsStep'
 
 
-class glsWrapper{
+class glsWrapper {
     constructor (data) {
         this._data = data;
         this._steps = null;
         this._curerntStep = null;
-        this.insertCss();
+        //this.insertCss(); needs to deal with broken links
     }
 
-    get structure (){
+    get structure () {
         const { structure } = this._data;
         return structure;
     }
@@ -50,5 +50,20 @@ class glsWrapper{
         return hoverTip;
     }
 
-    //need to add steps methods
+    goNext () {
+    this._currentStep = this.currentStep.nextStep;
+    }
+
+    get currentStep () {
+    if (!this._currentStep) {
+        this._currentStep = this.steps[0];
+        }
+    return this._currentStep;
+    }
+
+    insertCss () {
+    const styleDiv = document.createElement('style');
+    styleDiv.innerHTML = this.css;
+    document.body.append(styleDiv);
+    }
 }

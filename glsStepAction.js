@@ -1,8 +1,9 @@
 
 
 class glsStepAction {
-    constructor (action) {
+    constructor (glsWrapper,action) {
         this._action = action;
+        this._glsWrapper = glsWrapper;
     }
 
     get classes () {
@@ -73,5 +74,13 @@ class glsStepAction {
     get wdInterval () {
         const { wdInterval } = this._action;
         return wdInterval;
+    }
+
+    buildGuideElement () {
+        const elementHTML = this._glsWrapper.tiplates[this.type];
+        const appendDiv = document.createElement('div');
+        appendDiv.innerHTML = unescape(elementHTML);
+        const docElement = document.querySelector(this.selector);
+        docElement.append(appendDiv);
     }
 }
