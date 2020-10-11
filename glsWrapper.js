@@ -21,8 +21,7 @@ class glsWrapper{
 
     get css () {
         const { css } = this._data;
-        return css;
-        // might need to parse the css?
+        return unescape(css);
     }
 
     get settings () {
@@ -37,7 +36,6 @@ class glsWrapper{
         }
         
         return this._steps;
-        // should work now
     }
 
     get tipElement () {
@@ -50,5 +48,20 @@ class glsWrapper{
         return hoverTip;
     }
 
-    //need to add steps methods
+    goNext () {
+        this._curerntStep = this._curerntStep.nextStep;
+    }
+
+    get currentStep () {
+        if (!this._curerntStep) {
+            this._curerntStep = this.steps[0];
+        }
+        return this._curerntStep;
+    }
+
+    insertCss () {
+        const styleDiv = document.createElement('style');
+        styleDiv.innerHTML = this.css;
+        document.body.append(styleDiv);
+    }
 }
