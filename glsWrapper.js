@@ -1,4 +1,5 @@
-import glsStep from './glsStep'
+import glsStep from './glsStep.js'
+import { css } from './utils.js'
 
 
 class glsWrapper {
@@ -6,7 +7,7 @@ class glsWrapper {
         this._data = data;
         this._steps = null;
         this._curerntStep = null;
-        //this.insertCss(); needs to deal with broken links
+        this.insertCss();
     }
 
     get structure () {
@@ -20,9 +21,10 @@ class glsWrapper {
     }
 
     get css () {
-        const { css } = this._data;
-        return unescape(css);
-        // might need to parse the css?
+        return css;
+        //const { css } = this._data;
+        //return unescape(css);
+        
     }
 
     get settings () {
@@ -50,8 +52,24 @@ class glsWrapper {
         return hoverTip;
     }
 
-    goNext () {
-    this._currentStep = this.currentStep.nextStep;
+    goNext (event) {
+        if (event){
+            event.stopImmediatePropagation();
+            event.stopPropagation();
+            event,preventDefault();
+        }
+        if (!this._curerntStep){
+            this.startPlayer();
+            return;
+        }
+
+        this._curerntStep.removeGuideElement();
+        this._currentStep = this.currentStep.nextStep;
+        if (this._curerntStep.action.type === 'closeScenario') {
+            this.stopPlayer();
+            return;
+        }
+        this._curerntStep.buildGuideElement();
     }
 
     get currentStep () {
@@ -61,9 +79,30 @@ class glsWrapper {
     return this._currentStep;
     }
 
+    goBack () {
+        if (!this._curerntStep) {
+            this.startPlayer();
+            return;
+        }
+        
+        this._curerntStep.removeGuideElement();
+        this._curerntStep = this._curerntStep.prevStep;
+        this._curerntStep.buildGuideElement();
+    }
+
+    stopPlayer () {
+        this._curerntStep.removeGuideElement();
+        this._curerntStep = null;
+    }
+    startPlayer () {
+        this.currentStep.buildGuideElement();
+    }
+
     insertCss () {
     const styleDiv = document.createElement('style');
     styleDiv.innerHTML = this.css;
     document.body.append(styleDiv);
     }
 }
+
+export default glsWrapper;

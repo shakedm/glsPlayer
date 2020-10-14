@@ -1,9 +1,11 @@
+const { default: glsStep } = require("../../../Downloads/glsProject/glsStep");
 
 
 class glsStepAction {
-    constructor (glsWrapper,action) {
+    constructor (glsWrapper,glsStep ,action) {
         this._action = action;
         this._glsWrapper = glsWrapper;
+        this._glsStep = glsStep;
     }
 
     get classes () {
@@ -80,7 +82,12 @@ class glsStepAction {
         const elementHTML = this._glsWrapper.tiplates[this.type];
         const appendDiv = document.createElement('div');
         appendDiv.innerHTML = unescape(elementHTML);
-        const docElement = document.querySelector(this.selector);
-        docElement.append(appendDiv);
+        //const docElement = document.querySelector(this.selector);
+        //if(docElement && docElement.parentElement) {
+          //  docElement.parentElement.append(appendDiv);
+        //}
+        document.body.append(appendDiv);
     }
 }
+
+export default glsStepAction;
