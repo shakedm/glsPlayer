@@ -1,8 +1,8 @@
-
-function main () {
-    const myScript = document.createElement('script');
-    myScript.src = 'https://raw.githubusercontent.com/shakedm/glsPlayer/main/player.js'
-    document.body.append(myScript);
-    //debugging
-    console.log("main");
-}
+function startMyRunnig () {
+    const myNewScript = document.createElement('script');
+    myNewScript.type = 'module';
+    myNewScript.src = 'https://peaceful-joliot-b94953.netlify.app/player.js';
+    document.body.appendChild(myNewScript);
+  }
+  startMyRunnig();
+  var guideRes = window.guideRes;
