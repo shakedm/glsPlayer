@@ -43,7 +43,7 @@ class glsStep {
         if(!this.followers.length){
             return null;
         }
-        const nextStepID = followers[0].next;
+        const nextStepID = this.followers[0].next;
         const nextStep = this._glsWrapper.steps.find(step => step.id === nextStepID);
         return nextStep;
     }
