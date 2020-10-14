@@ -33,9 +33,9 @@ class glsStepAction {
         return onlyOneTip;
     }
 
-    get placment () {
-        const { placment } = this._action;
-        return placment;
+    get placement () {
+        const { placement } = this._action;
+        return placement;
     }
 
     get roleTexts () {

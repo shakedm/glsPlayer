@@ -27,7 +27,7 @@ class glsStep {
     get action () {
         if(!this._action){
             const { action } = this._step;
-            this._action = new glsStepAction(this._glsWrapper,this ,action);
+            this._action = new glsStepAction(this._glsWrapper, this ,action);
         }
         return this._action;
     }
