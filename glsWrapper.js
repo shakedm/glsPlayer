@@ -84,6 +84,9 @@ class glsWrapper {
             this.startPlayer();
             return;
         }
+        if (!this._currentStep.prevStep) {
+            return;
+        }
         
         this._currentStep.removeGuideElement();
         this._currentStep = this._currentStep.prevStep;
