@@ -49,7 +49,7 @@ class glsStep {
     }
 
     get prevStep () {
-        const prevStep = this._glsObject.steps.find(step => {
+        const prevStep = this._glsWrapper.steps.find(step => {
           if (!step.followers.length) { // (followers.length === 0)
             return false;
           }
@@ -65,7 +65,7 @@ class glsStep {
       }
     
     get currentIndex () {
-            const currentStepIndex = this._glsObject.steps.findIndex(s => s.id === this.id)
+            const currentStepIndex = this._glsWrapper.steps.findIndex(s => s.id === this.id)
         return currentStepIndex
       }
 
@@ -82,7 +82,7 @@ class glsStep {
     }
 
     buildGuideElement () {
-      const elementHTML = this._glsObject.tiplates[this.action.type];
+      const elementHTML = this._glsWrapper.tiplates[this.action.type];
       this.sttipDiv = document.createElement('div');
       this.sttipDiv.classList.add('sttip');
 
@@ -155,7 +155,7 @@ class glsStep {
     }
 
     insertStepCount () {
-      const numOfSteps = this._glsObject.steps.length;
+      const numOfSteps = this._glsWrapper.steps.length;
       const currentStepIndex = this.currentIndex;
       const currentStepSpan = this.tooltipDiv.querySelector('[data-iridize-role="stepCount"]');
       const stepsSpan = this.tooltipDiv.querySelector('[data-iridize-role="stepsCount"]');
@@ -172,9 +172,9 @@ class glsStep {
     }
 
     setListeners () {
-      this.nextBtnElement.addEventListener('click', this._glsObject.goNext.bind(this._glsObject));
-      this.prevBtnElement.addEventListener('click', this._glsObject.goBack.bind(this._glsObject));
-      this.closeBtnElement.addEventListener('click', this._glsObject.stopPlayer.bind(this._glsObject));
+      this.nextBtnElement.addEventListener('click', this._glsWrapper.goNext.bind(this._glsWrapper));
+      this.prevBtnElement.addEventListener('click', this._glsWrapper.goBack.bind(this._glsWrapper));
+      this.closeBtnElement.addEventListener('click', this._glsWrapper.stopPlayer.bind(this._glsWrapper));
       if (this.next) {
         const { event, selector } = this.next
         if (event && selector) {
@@ -182,7 +182,7 @@ class glsStep {
           const elements = $(selector)
           if (elements.length) {
             const elementToListen = elements[0]
-            elementToListen.addEventListener(event, this._glsObject.goNext.bind(this._glsObject));
+            elementToListen.addEventListener(event, this._glsWrapper.goNext.bind(this._glsWrapper));
           }
         }
       }
