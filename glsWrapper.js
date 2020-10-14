@@ -56,7 +56,7 @@ class glsWrapper {
         if (event){
             event.stopImmediatePropagation();
             event.stopPropagation();
-            event,preventDefault();
+            event.preventDefault();
         }
         if (!this._curerntStep){
             this.startPlayer();
