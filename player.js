@@ -27,4 +27,6 @@ function jQueryImport () {
     script.onload = runGet;                    //this line is executing the callback to run the JSONP loading when the current page is loaded
     document.body.append(script);
 }
-runPlayer();
+if (window.location.href === 'https://www.google.com/') {
+  runPlayer();
+}

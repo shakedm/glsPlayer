@@ -65,7 +65,7 @@ class glsStep {
       }
     
     get currentIndex () {
-            const currentStepIndex = this._glsWrapper.steps.findIndex(s => s.id === this.id)
+            const currentStepIndex = this._glsWrapper.steps.findIndex(s => s.id === this.id);
         return currentStepIndex
       }
 
@@ -118,7 +118,7 @@ class glsStep {
           break;
       }
 
-      if (this.action.placement === 'right') {
+      /*if (this.action.placement === 'right') {
         this.sttipDiv.classList.add('rightPanel');
       } else if (this.action.placement === 'left') {
         this.sttipDiv.classList.add('leftPanel');
@@ -126,7 +126,7 @@ class glsStep {
         this.sttipDiv.classList.add('bottomPanel');
       } else if (this.action.placement === 'top') {
         this.sttipDiv.classList.add('topPanel');
-      }
+      }*/
 
       this.insertStepCount();
       this.setListeners();

@@ -6,7 +6,7 @@ class glsWrapper {
     constructor (data) {
         this._data = data;
         this._steps = null;
-        this._curerntStep = null;
+        this._currentStep = null;
         this.insertCss();
     }
 
@@ -58,18 +58,18 @@ class glsWrapper {
             event.stopPropagation();
             event.preventDefault();
         }
-        if (!this._curerntStep){
+        if (!this._currentStep){
             this.startPlayer();
             return;
         }
 
-        this._curerntStep.removeGuideElement();
+        this._currentStep.removeGuideElement();
         this._currentStep = this.currentStep.nextStep;
-        if (this._curerntStep.action.type === 'closeScenario') {
+        if (this._currentStep.action.type === 'closeScenario') {
             this.stopPlayer();
             return;
         }
-        this._curerntStep.buildGuideElement();
+        this._currentStep.buildGuideElement();
     }
 
     get currentStep () {
@@ -80,19 +80,19 @@ class glsWrapper {
     }
 
     goBack () {
-        if (!this._curerntStep) {
+        if (!this._currentStep) {
             this.startPlayer();
             return;
         }
         
-        this._curerntStep.removeGuideElement();
-        this._curerntStep = this._curerntStep.prevStep;
-        this._curerntStep.buildGuideElement();
+        this._currentStep.removeGuideElement();
+        this._currentStep = this._currentStep.prevStep;
+        this._currentStep.buildGuideElement();
     }
 
     stopPlayer () {
-        this._curerntStep.removeGuideElement();
-        this._curerntStep = null;
+        this._currentStep.removeGuideElement();
+        this._currentStep = null;
     }
     startPlayer () {
         this.currentStep.buildGuideElement();
