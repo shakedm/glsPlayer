@@ -40,7 +40,7 @@ class glsStep {
 
 
     get nextStep () {
-        if(!followers.length){
+        if(!this.followers.length){
             return null;
         }
         const nextStepID = followers[0].next;
