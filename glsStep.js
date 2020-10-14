@@ -1,4 +1,4 @@
-import glsStepAction from './glsStepAction'
+import glsStepAction from './glsStepAction.js'
 
 function injectElementToElement (elementSelector, elementToInject) {
     const elements = $(elementSelector);
@@ -170,7 +170,7 @@ class glsStep {
         this.tooltipDiv = null;
       }
     }
-    
+
     setListeners () {
       this.nextBtnElement.addEventListener('click', this._glsObject.goNext.bind(this._glsObject));
       this.prevBtnElement.addEventListener('click', this._glsObject.goBack.bind(this._glsObject));
