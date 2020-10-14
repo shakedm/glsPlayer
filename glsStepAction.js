@@ -1,4 +1,4 @@
-const { default: glsStep } = require("../../../Downloads/glsProject/glsStep");
+//sconst { default: glsStep } = require("../../../Downloads/glsProject/glsStep");
 
 
 class glsStepAction {
@@ -78,7 +78,7 @@ class glsStepAction {
         return wdInterval;
     }
 
-    buildGuideElement () {
+    /*buildGuideElement () {
         const elementHTML = this._glsWrapper.tiplates[this.type];
         const appendDiv = document.createElement('div');
         appendDiv.innerHTML = unescape(elementHTML);
@@ -87,7 +87,7 @@ class glsStepAction {
           //  docElement.parentElement.append(appendDiv);
         //}
         document.body.append(appendDiv);
-    }
+    }*/
 }
 
 export default glsStepAction;
