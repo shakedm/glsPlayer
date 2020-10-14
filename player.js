@@ -8,14 +8,12 @@ function runPlayer () {
 }
 
 function handleJSONP (response) {
-    let data;
-    console.log('json success');
-    if (response.success) {
-        data = new glsWrapper(response.data);
-    }
-    window.guideRes = new glsWrapper(data);
-    window.guideRes.startPlayer();
     
+    if (response.success) {
+        const data = response.data;
+        window.guideRes = new glsWrapper(data);
+        window.guideRes.startPlayer();
+    }
 }
 
 function runGet () {
